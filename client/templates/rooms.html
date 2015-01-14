@@ -1,0 +1,15 @@
+<template name='rooms'>
+  {{#each roomList}}
+    {{> room_item}}
+  {{/each}}
+  <form id='room_form'>
+    <input id='new_room'  type="text" style="width:100%" class="new_room" placeholder="New Room"/>
+  </form>
+</template>
+
+<template name='room_item'>
+  <div class='room_item'>
+    <i class="fa fa-trash trash icon"></i>
+    <a href='/rooms/{{_id}}'>{{name}}</a>
+  </div>
+</template>

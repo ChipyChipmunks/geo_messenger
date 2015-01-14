@@ -1,0 +1,87 @@
+body {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 3em 0;
+  padding: 0;
+}
+
+.outer {
+  margin: 0 auto;
+  padding-top: 1.5em;
+  max-width: 700px;
+}
+
+.title {
+  align-self: center;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.subtitle {
+  align-self: center;
+  text-align: center;
+}
+
+.message_box {
+  margin-top: 1em;
+  padding: 5;
+  padding-left: 0.5em;
+  text-align: left;
+  max-width: 100%; 
+  font-family: sans-serif;
+}
+
+.message {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  font-size: 0.75em;
+  border-bottom: 1px solid #a5e5e5;
+  word-wrap: break-word;
+  font-family: monospace;
+}
+
+.user_text {
+  font-size: 20px; 
+}
+
+.user_details {
+  font-size: 13px;
+  font-family: monospace;
+  color: gray;
+}
+
+.time {
+  font-size: 13px;
+  font-family: monospace;
+  color: gray;
+  padding-left: 2em;
+}
+
+.room_item {
+  margin-top: 1em;
+  padding: 5;
+  max-width: 100%;  
+  font-size: 20px;  
+  border-bottom: 1px solid #a5e5e5;
+  margin-bottom: 1em;
+  font-family: monospace;
+  color: #4593ED;
+}
+
+.icon {
+  color: #eb5f3a;  
+  float: right;
+  font-size: 1.75em;
+}
+
+.new_room {
+  padding-left: 0.5em; 
+  font-family: monospace;
+}
+
+.back_arrow {
+  float: left;
+  font-size: 2em;
+  color: #eb5f3a;
+}

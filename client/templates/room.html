@@ -1,0 +1,30 @@
+<template name='room'>
+<!--  <i class="fa fa-arrow-circle-left back_arrow"></i>-->
+  <h1 class="title">{{room}}</h1> <!-- make this the group chat name -->
+  <div class="message_history">
+    {{> messages}}
+  </div>
+  {{> textInput}}
+</template>
+
+
+<template name='messages'>
+  {{#each messages}}
+    {{> message }}
+  {{/each}}
+</template>
+
+<template name='message' class="message">
+  <div class='message'>
+    <i class="fa fa-trash icon trash"></i>
+    <div class='user_details'>{{email}} ({{time}})</div>
+    <div class='user_text'>{{text}}</div>
+  </div>
+</template>
+
+
+<template name='textInput'>
+  <form id='ourForm'>
+    <input id='messagebox'  type="text" style="width:100%" class="message_box" placeholder="Enter Message"/>
+  </form>
+</template>

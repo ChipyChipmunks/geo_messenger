@@ -15,3 +15,5 @@ ian:accounts-ui-bootstrap-3
 mrt:bootstrap-3
 accounts-password
 momentjs:moment
+iron:router
+fortawesome:fontawesome

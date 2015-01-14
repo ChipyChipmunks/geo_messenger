@@ -1,35 +1,10 @@
-
-<body>
+<template name='layout'>
   {{> navbar }} 
   <div class="outer">
-    <div class="logo"></div>
-    <h1 class="title">Geo Message</h1> <!-- make this the group chat name -->
-    <div class="message_history">
-      {{> messages}}
-    </div>
-    {{> textInput}}
+    {{> yield}}
   </div>
-</body>
+</template> 
 
-<template name='messages'>
-  {{#each messages}}
-    {{> message }}
-  {{/each}}
-</template>
-
-<template name='message' class="message">
-  <div class='message'>
-    <div class='user_details'>{{email}} ({{time}})</div>
-    <div class='user_text'>{{text}}</div>
-  </div>
-</template>
-
-
-<template name='textInput'>
-  <form id='ourForm'>
-    <input id='messagebox'  type="text" style="width:100%" class="message_box" placeholder="Enter Message"/>
-  </form>
-</template>
 
 <template name="navbar">
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -41,15 +16,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Geo Message</a>
+            <a class="navbar-brand" href="/">Geo Chat</a>
           </div>
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
 
               <li class="active"><a href="/">Home</a></li>
-<!--
-              <li><a href="create">Create</a></li>
-              <li><a href="about">About</a></li>
+              
+<!--           <li><a href="about">About</a></li>
               <li><a href="contact">Contact</a></li>
 -->
             </ul>
