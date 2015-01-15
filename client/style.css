@@ -9,7 +9,9 @@ body {
 .outer {
   margin: 0 auto;
   padding-top: 1.5em;
-  max-width: 700px;
+  max-width: inherit;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 .title {
@@ -27,6 +29,7 @@ body {
   margin-top: 1em;
   padding: 5;
   padding-left: 0.5em;
+  margin-bottom: 1em; 
   text-align: left;
   max-width: 100%; 
   font-family: cursive;
@@ -76,7 +79,8 @@ body {
 }
 
 .new_room {
-  padding-left: 0.5em; 
+  padding-left: 0.5em;
+  margin-bottom: 1em;
   font-family: cursive;
 }
 
@@ -84,4 +88,9 @@ body {
   float: left;
   font-size: 2em;
   color: #eb5f3a;
+}
+
+#map { 
+  height: 400px;
+  width: 400px;
 }
