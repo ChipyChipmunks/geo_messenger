@@ -72,10 +72,19 @@ body {
   color: #4593ED;
 }
 
-.icon {
-  color: #eb5f3a;  
+.icon { 
+  padding-right: 0.5em;
+  padding-left: 0.25em;
   float: right;
   font-size: 20px;
+}
+
+.trash {
+  color: red; 
+}
+
+.arrow {
+  color: #4DA9D6;
 }
 
 .new_room {
