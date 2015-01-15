@@ -29,7 +29,7 @@ body {
   padding-left: 0.5em;
   text-align: left;
   max-width: 100%; 
-  font-family: sans-serif;
+  font-family: cursive;
 }
 
 .message {
@@ -38,7 +38,7 @@ body {
   font-size: 0.75em;
   border-bottom: 1px solid #a5e5e5;
   word-wrap: break-word;
-  font-family: monospace;
+  font-family: cursive;
 }
 
 .user_text {
@@ -47,13 +47,13 @@ body {
 
 .user_details {
   font-size: 13px;
-  font-family: monospace;
+  font-family: cursive;
   color: gray;
 }
 
 .time {
   font-size: 13px;
-  font-family: monospace;
+  font-family: cursive;
   color: gray;
   padding-left: 2em;
 }
@@ -65,19 +65,19 @@ body {
   font-size: 20px;  
   border-bottom: 1px solid #a5e5e5;
   margin-bottom: 1em;
-  font-family: monospace;
+  font-family: cursive;
   color: #4593ED;
 }
 
 .icon {
   color: #eb5f3a;  
   float: right;
-  font-size: 1em;
+  font-size: 20px;
 }
 
 .new_room {
   padding-left: 0.5em; 
-  font-family: monospace;
+  font-family: cursive;
 }
 
 .back_arrow {
