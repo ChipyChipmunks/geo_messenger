@@ -29,6 +29,7 @@ Template.room.helpers(
 
 Template.message.events(
   'click .trash' : -> (Messages.remove(this._id))
+  'click .arrow' : -> console.log('Its working')
   'click .message' : -> console.log(this) 
 )
 

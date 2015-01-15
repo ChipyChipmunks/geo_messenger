@@ -87,6 +87,10 @@ body {
   color: #4DA9D6;
 }
 
+.info {
+  color: #4DA9D6;  
+}
+
 .new_room {
   padding-left: 0.5em;
   margin-bottom: 1em;
@@ -97,6 +101,11 @@ body {
   float: left;
   font-size: 2em;
   color: #eb5f3a;
+}
+
+.message_infomation {
+  margin-bottom: 1em; 
+  margin-top: 1em;
 }
 
 #map { 

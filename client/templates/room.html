@@ -22,20 +22,27 @@
 </template>
 
 <template name='message' class="message">
-  <div class='message' data-toggle="collapse" data-target="#content">
+  <div class='message' data-toggle="collapse" data-target="#{{this._id}}">
     <i class="fa fa-trash icon trash"></i>
     <i class="fa fa-location-arrow icon arrow"></i>
     <div class='user_details'>{{email}} ({{time}})</div>
     <div class='user_text'>{{text}}</div>
+    <div class="collapse" id="{{this._id}}">
+      <a href="#" class="content_field" data-name="{{this._id}}"></a>
+      {{> message_infomation}}
+    </div>
   </div>
-  <!--
-<div class="collapse" id="content">
-<a href="#" class="content_field" data-name="content"></a>
 
-</div>
--->
+
+
 </template>
 
+<template name="message_infomation" class="message_infomation">
+  <div>{{email}}</div>
+  <div>{{date}}</div>
+  <div>{{room}} </div>
+  <div>{{positon}}</div>
+</template>
 
 <template name='textInput'>
   <form id='ourForm'>
