@@ -1,16 +1,23 @@
 <template name='room'>
-<!--  <i class="fa fa-arrow-circle-left back_arrow"></i>-->
-  <h1 class="title">{{room}}</h1> <!-- make this the group chat name -->
-  <div class="message_history">
-    {{> messages}}
+  <!--  <i class="fa fa-arrow-circle-left back_arrow"></i>-->
+  <div class="row">
+    <div class="col-md-12"><h1 class="title">{{room}}</h1></div><!-- make this the group chat name -->
+    <div class="col-md-6">
+      <div class="message_history">
+        {{> messages}}
+      </div>
+      {{> textInput}}
+    </div>
+    <div class="col-md-6">
+      {{> map}}
+    </div>
   </div>
-  {{> textInput}}
 </template>
 
 
 <template name='messages'>
   {{#each messages}}
-    {{> message }}
+  {{> message }}
   {{/each}}
 </template>
 
@@ -20,11 +27,12 @@
     <div class='user_details'>{{email}} ({{time}})</div>
     <div class='user_text'>{{text}}</div>
   </div>
-  
-  <div class="collapse" id="content">
-        <a href="#" class="content_field" data-name="content"></a>
-    {{> map}}
-      </div>
+  <!--
+<div class="collapse" id="content">
+<a href="#" class="content_field" data-name="content"></a>
+
+</div>
+-->
 </template>
 
 
@@ -32,7 +40,7 @@
   <form id='ourForm'>
     <input id='messagebox'  type="text" style="width:100%" class="message_box" placeholder="Enter Message"/>
   </form>
-<!--  {{> map}}-->
+  <!--  {{> map}}-->
 </template>
 
 <template name='map'>

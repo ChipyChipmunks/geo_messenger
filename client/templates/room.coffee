@@ -14,8 +14,10 @@ Template.textInput.events(
       text: text
       user: Meteor.user()._id
       email: Meteor.user().emails[0].address
+      position: Geolocation.currentLocation()
       date: new Date()
     )
+    console.log(Geolocation.currentLocation())
     input.value=''
     input.focus()
     false
@@ -27,6 +29,7 @@ Template.room.helpers(
 
 Template.message.events(
   'click .trash' : -> (Messages.remove(this._id))
+  'click .message' : -> console.log(this) 
 )
 
 Template.messages.helpers ( 
@@ -39,11 +42,12 @@ Template.message.helpers (
   room : -> @room_id
 )
 
-Template.map.rendered = -> 
+Template.map.rendered = ->
+  console.log(this)
   # create a map in the "map" div, set the view to a given place and zoom
   map = L.map('map').setView([
-    51.505
-    -0.09
+    -41.2889,
+    174.7772
   ], 13)
 
   # add an OpenStreetMap tile layer
