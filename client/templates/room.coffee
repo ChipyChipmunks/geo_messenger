@@ -14,13 +14,19 @@ Template.textInput.events(
         text: text
         user: Meteor.user()._id
         email: Meteor.user().emails[0].address
-        position: Geolocation.currentLocation()
+        position: position()
         date: new Date()
       )
+      console.log(position())
       input.value=''
       input.focus()
     false
 )
+
+position = ->
+    pos = Geolocation.currentLocation()
+    pos = [-41.2889, 174.7772] if pos == null
+    pos
 
 Template.room.helpers(
   name : -> Rooms.findOne({_id:(this.room_id)}).name
@@ -85,8 +91,8 @@ Template.map.rendered = ->
 
   map.on "click", (e) ->
     marker = new L.marker(e.latlng)
-    marker.addTo(map).bindPopup('name <br> message jdflkd kjdflkjd klfjdlksajf jkfdlsajflk jdkslajfdlks jfdkslajfdlks jfdklsajf ds fjkdlsajf lkasdjf lkasdjf lkasdjf ').openPopup()
-    Markers.insert(Marker: marker)
+    marker.addTo(map).bindPopup('name <br> message').openPopup()
+    #Markers.insert(Marker: marker)
     console.log(Markers)
     return
 
