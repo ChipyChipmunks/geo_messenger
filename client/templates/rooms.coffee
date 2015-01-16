@@ -6,19 +6,20 @@ Template.rooms.helpers (
 
 Template.rooms.events(
   'submit #room_form': (evt, template) -> 
+    evt.preventDefault()
     input = template.find('#new_room')
     text = input.value 
     console.log('input' ,text)
     Rooms.insert (
       name: text
       creation_date: new Date()
+      owner: Meteor.user()._id
     )
     input.value=''
     input.focus()
-    false
   
   'click .trash': -> 
-    Meteor.call('remove_room', @_id)
+    Rooms.remove(@_id)
 )
 
 

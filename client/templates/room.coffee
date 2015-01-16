@@ -6,26 +6,30 @@ Meteor.setInterval((-> screenUpdateDep.changed()), 30000)
 
 Template.textInput.events(
   'submit #ourForm': (evt, template) -> 
+    evt.preventDefault()
     input = template.find('#messagebox')
     text = input.value 
-    if Rooms.findOne({_id:@room_id})!=undefined
-      Messages.insert (
+    if Rooms.findOne({_id:@room_id}) != undefined
+      newMessage =
         room_id: @room_id
         text: text
         user: Meteor.user()._id
         email: Meteor.user().emails[0].address
         position: position()
         date: new Date()
-      )
-      console.log(position())
+
+      Messages.insert newMessage
+      
       input.value=''
       input.focus()
-    false
 )
 
 position = ->
     pos = Geolocation.currentLocation()
-    pos = [-41.2889, 174.7772] if pos == null
+    if pos == null
+      pos = [-41.2889, 174.7772] 
+    else
+      pos = [pos.coords.latitude, pos.coords.longitude]
     pos
 
 Template.room.helpers(
@@ -39,11 +43,10 @@ Template.message.events(
 )
 
 Template.messages.helpers ( 
-  messages : -> Messages.find({room_id:@room_id}).fetch()
+  messages : -> Messages.find({room_id:@room_id},{sort: { date: 1 }}).fetch()
 )
 
 Template.message.helpers (
-#  time : -> moment(@date).fromNow()
   time : -> screenUpdateDep.depend(); moment(@date).fromNow()
   room : -> @room_id
 )
@@ -92,10 +95,21 @@ Template.map.rendered = ->
   map.on "click", (e) ->
     marker = new L.marker(e.latlng)
     marker.addTo(map).bindPopup('name <br> message').openPopup()
-    #Markers.insert(Marker: marker)
-    console.log(Markers)
     return
 
+  addMessage = (message) ->
+    console.log('new message is', message)
+    latlng = L.latLng(message.position[0],message.position[1])
+    marker = new L.marker(latlng)
+    console.log(marker)
+    marker.addTo(map).bindPopup(message.text).openPopup()
+    
+  Messages.find({room_id:@data.room_id}).observe(
+    added: addMessage
+    removed: (o) -> console.log 'removed', o
+    changed: (n,o) -> console.log 'changed', o, n
+  )
+  
 #  # add a marker in the given location, attach some popup content to it and open the popup
 #  L.marker([
 #    -41.2889,

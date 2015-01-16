@@ -1,13 +1,14 @@
 <template name='room'>
   <!--  <i class="fa fa-arrow-circle-left back_arrow"></i>-->
   <div class="row">
-    
     <div class="col-md-12"><h1 class="title">{{name}}</h1></div><!-- make this the group chat name -->
     <div class="col-md-6">
       <div class="message_history">
         {{> messages}}
       </div>
-      {{> textInput}}
+      {{# if currentUser}}
+        {{> textInput}}
+      {{/if}}
     </div>
     <div class="col-md-6">
       {{> map}}

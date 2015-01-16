@@ -6,7 +6,6 @@
 
 meteor-platform
 autopublish
-insecure
 coffeescript
 accounts-facebook
 accounts-google
@@ -19,3 +18,4 @@ iron:router
 fortawesome:fontawesome
 mrt:leaflet-0.6.4
 mdg:geolocation
+underscore

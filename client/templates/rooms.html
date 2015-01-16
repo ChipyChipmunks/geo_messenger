@@ -9,10 +9,20 @@
 </template>
 
 <template name='room_item'>
-  <div class='room_item'>
+  <div class='room_item' data-toggle="collapse" data-target="#{{this._id}}">
     <i class="fa fa-trash trash icon"></i>
     <a href='/rooms/{{_id}}'>{{name}}</a>
   </div>
+  <div class="collapse" id="{{this._id}}">
+    <a href="#" class="content_field" data-name="{{this._id}}"></a>
+      {{> room_infomation}}
+  </div>
+</template>
+
+<template name="room_infomation">
+<!-- Put the list of active users for this room in here -->
+  <div>{{name}}</div>
+  <div>This will soon be a list of active users in the room</div>
 </template>
 
 <!--
