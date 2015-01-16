@@ -1,7 +1,8 @@
 <template name='room'>
   <!--  <i class="fa fa-arrow-circle-left back_arrow"></i>-->
   <div class="row">
-    <div class="col-md-12"><h1 class="title">{{room}}</h1></div><!-- make this the group chat name -->
+    
+    <div class="col-md-12"><h1 class="title">{{name}}</h1></div><!-- make this the group chat name -->
     <div class="col-md-6">
       <div class="message_history">
         {{> messages}}
@@ -24,6 +25,7 @@
 <template name='message' class="message">
   <div class='message' data-toggle="collapse" data-target="#{{this._id}}">
     <i class="fa fa-trash icon trash"></i>
+<!--  Do somthing with the arrow because it looks cool and it will be nice to have somthing there  -->
     <i class="fa fa-location-arrow icon arrow"></i>
     <div class='user_details'>{{email}} ({{time}})</div>
     <div class='user_text'>{{text}}</div>
@@ -46,11 +48,10 @@
 
 <template name='textInput'>
   <form id='ourForm'>
-    <input id='messagebox'  type="text" style="width:100%" class="message_box" placeholder="Enter Message"/>
+    <input id='messagebox' type="text" style="width:100%" class="message_box" placeholder="Enter Message"/>
   </form>
-  <!--  {{> map}}-->
 </template>
 
 <template name='map'>
-  <div id="map"></div>
+  <div class="map" id="map"></div>
 </template>

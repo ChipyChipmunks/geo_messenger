@@ -17,7 +17,10 @@ body {
 .title {
   align-self: center;
   text-align: center;
-  padding-bottom: 1em;
+  padding-bottom: 0.5em;
+  color: black;
+  font-size: 3em;
+  font-family: sans-serif;
 }
 
 .subtitle {
@@ -94,6 +97,7 @@ body {
 .new_room {
   padding-left: 0.5em;
   margin-bottom: 1em;
+  margin-top: 1em;
   font-family: cursive;
 }
 
