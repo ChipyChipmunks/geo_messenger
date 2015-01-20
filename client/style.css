@@ -57,6 +57,15 @@ body {
   color: gray;
 }
 
+.rooms {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.search_input {
+  max-width: 100%; 
+}
+
 .time {
   font-size: 13px;
   font-family: cursive;
@@ -110,6 +119,11 @@ body {
 .message_infomation {
   margin-bottom: 1em; 
   margin-top: 1em;
+}
+
+.messages_div {
+  overflow: auto;
+  max-height: 400px;
 }
 
 #map { 

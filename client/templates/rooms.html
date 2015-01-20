@@ -8,6 +8,8 @@
 <!--    {{> map}}-->
 </template>
 
+
+
 <template name='room_item'>
   <div class='room_item' data-toggle="collapse" data-target="#{{this._id}}">
     <i class="fa fa-trash trash icon"></i>
@@ -21,8 +23,9 @@
 
 <template name="room_infomation">
 <!-- Put the list of active users for this room in here -->
-  <div>{{name}}</div>
-  <div>This will soon be a list of active users in the room</div>
+<!--  <div>{{name}}</div>-->
+  <div>created on {{creation_date}}</div>
+<!--  <div>This will soon be a list of active users in the room</div>-->
 </template>
 
 <!--

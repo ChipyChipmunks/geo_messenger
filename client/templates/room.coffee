@@ -20,9 +20,16 @@ Template.textInput.events(
 
       Messages.insert newMessage
       
-      input.value=''
+      #console.log(document.getElementById('#messages_div'))
+      #scroll_bottom()
+      
+      input.value = ''
       input.focus()
 )
+
+scroll_bottom : -> 
+  messages_div = document.getElementById('#messages_div')
+  messages_div.scrollTop = messages_div.scrollHeight
 
 position = ->
     pos = Geolocation.currentLocation()
@@ -55,7 +62,6 @@ Template.message.helpers (
 #  'click #map' : -> 
 #   console.log('click', map)
 #)
-  
 
 Template.map.rendered = ->
   #console.log(this)
@@ -92,17 +98,19 @@ Template.map.rendered = ->
 
   L.Icon.Default.imagePath = 'https://raw.githubusercontent.com/bevanhunt/meteor-leaflet/master/images'
 
-  map.on "click", (e) ->
-    marker = new L.marker(e.latlng)
-    marker.addTo(map).bindPopup('name <br> message').openPopup()
-    return
+#  map.on "click", (e) ->
+#    marker = new L.marker(e.latlng)
+#    marker.addTo(map).bindPopup('name <br> message').openPopup()
+#    return
 
   addMessage = (message) ->
-    console.log('new message is', message)
     latlng = L.latLng(message.position[0],message.position[1])
     marker = new L.marker(latlng)
     console.log(marker)
     marker.addTo(map).bindPopup(message.text).openPopup()
+    
+  remove_marker = (message) ->
+    map.removeLayer(latlng = L.latLng(message.position[0], message.position[1]))
     
   Messages.find({room_id:@data.room_id}).observe(
     added: addMessage

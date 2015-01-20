@@ -16,11 +16,12 @@
   </div>
 </template>
 
-
 <template name='messages'>
+  <div class='messages_div' id='messages_div'>
   {{#each messages}}
   {{> message }}
   {{/each}}
+  </div>
 </template>
 
 <template name='message' class="message">

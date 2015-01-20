@@ -15,15 +15,16 @@ Rooms.deny(
 
 Rooms.find({}).observe(
   removed: (doc) -> Messages.remove({room_id: doc._id})
-  added: (doc) -> 
-    if Messages.find({room_id:doc._id}).count() == 0
-      Messages.insert 
-        room_id: doc._id
-        text: 'Welcome to the new room!'
-        user: ''
-        email: 'administrator'
-        position: [0,0]
-        date: new Date()
+  
+#  added: (doc) -> 
+#    if Messages.find({room_id:doc._id}).count() == 0
+#      Messages.insert 
+#        room_id: doc._id
+#        text: 'Welcome to the new room!'
+#        user: ''
+#        email: 'administrator'
+#        position: [0,0]
+#        date: new Date()
       
 )
 
