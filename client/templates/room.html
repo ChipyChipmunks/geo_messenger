@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-md-12"><h1 class="title">{{name}}</h1></div><!-- make this the group chat name -->
     <div class="col-md-6">
+      {{> search_bar}}
       <div class="message_history">
         {{> messages}}
       </div>
@@ -24,6 +25,23 @@
   </div>
 </template>
 
+<template name='search_bar'>
+  <div class='message' data-toggle="collapse" data-target="#search_results">
+    <form class="navbar-form" role="search" id='search_bar'>
+      <div class="search_bar" style="max-width:100%">
+        <input type="text" class="form-control search_bar" placeholder="Search" name="srch-term" id="srch-term" autocomplete="off">
+      
+<!--
+        <div class="collapse" id="search_results">
+        <a href="#" class="content_field" data-name="{{this._id}}"></a>
+        yo
+        </div>
+-->
+      </div>
+    </form>
+  </div>
+</template>
+
 <template name='message' class="message">
   <div class='message' data-toggle="collapse" data-target="#{{this._id}}">
     <i class="fa fa-trash icon trash"></i>
@@ -36,9 +54,6 @@
       {{> message_infomation}}
     </div>
   </div>
-
-
-
 </template>
 
 <template name="message_infomation" class="message_infomation">
@@ -50,7 +65,7 @@
 
 <template name='textInput'>
   <form id='ourForm'>
-    <input id='messagebox' type="text" style="width:100%" class="message_box" placeholder="Enter Message" autocomplete="off"/>
+    <textarea id='messagebox' cols="40" rows="5" style="width:100%" class="message_box" placeholder="Enter Message" autocomplete="off"></textarea>
   </form>
 </template>
 

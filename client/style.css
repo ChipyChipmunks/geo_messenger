@@ -30,12 +30,15 @@ body {
 
 .message_box {
   margin-top: 1em;
-  padding: 5;
+  padding: 2px;
   padding-left: 0.5em;
-  margin-bottom: 1em; 
+  margin-bottom: 0.5em; 
   text-align: left;
   max-width: 100%; 
+  resize: none;
+  height: 5em;
   font-family: cursive;
+  
 }
 
 .message {
@@ -49,6 +52,7 @@ body {
 
 .user_text {
   font-size: 20px; 
+  white-space: pre;
 }
 
 .user_details {
@@ -62,8 +66,12 @@ body {
   margin-bottom: 1em;
 }
 
-.search_input {
-  max-width: 100%; 
+.search_bar {
+  max-width: 100%;
+}
+
+.login_buttons {
+  align-self: center;
 }
 
 .time {

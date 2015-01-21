@@ -14,10 +14,10 @@ Template.rooms.events(
       name: text
       creation_date: new Date()
       owner: Meteor.user()._id
+      owner_email: Meteor.user().emails[0].address
     )
     input.value=''
     input.focus()
-  
   'click .trash': -> 
     Rooms.remove(@_id)
 )
