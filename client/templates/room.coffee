@@ -42,7 +42,7 @@ position = ->
     pos
 
 Template.room.helpers(
-  name : -> Rooms.findOne({_id:(this.room_id)}).name
+  name : -> room = Rooms.findOne({_id:(@room_id)}); room && room.name
 )
 
 Template.message.events(

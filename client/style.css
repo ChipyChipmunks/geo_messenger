@@ -1,9 +1,16 @@
+html,body {
+  height:100%;
+  margin:0;
+  padding:0;
+}
+.full_height {
+  height:100%;
+}
 body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: normal;
-  margin: 3em 0;
-  padding: 0;
+  padding-top: 5.125rem;
 }
 
 .outer {
@@ -18,9 +25,9 @@ body {
   align-self: center;
   text-align: center;
   padding-bottom: 0.5em;
-  color: black;
-  font-size: 3em;
-  font-family: sans-serif;
+  color: #4DA9D6;
+  font-size: 2em;
+  font-family: fantasy;
 }
 
 .subtitle {
@@ -131,11 +138,11 @@ body {
 
 .messages_div {
   overflow: auto;
-  max-height: 400px;
+  max-height: 38em;
 }
 
 #map { 
-  height: 400px;
+  height: 99%;
   width: 100%;
   cursor: crosshair;
 }

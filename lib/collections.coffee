@@ -45,13 +45,3 @@ root = exports ? this
 root.Messages = Messages
 root.Rooms = Rooms
 
-
-if Meteor.isServer
-  Meteor.publish "messages", ->
-    Messages.find()
-  Meteor.publish "rooms", ->
-    Rooms.find()
-
-if Meteor.isClient
-  Meteor.subscribe "messages"
-  Meteor.subscribe "rooms"

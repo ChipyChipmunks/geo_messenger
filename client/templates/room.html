@@ -1,19 +1,24 @@
 <template name='room'>
   <!--  <i class="fa fa-arrow-circle-left back_arrow"></i>-->
-  <div class="row">
-    <div class="col-md-12"><h1 class="title">{{name}}</h1></div><!-- make this the group chat name -->
-    <div class="col-md-6">
-      {{> search_bar}}
-      <div class="message_history">
-        {{> messages}}
-      </div>
+  <div class="row full_height">
+    <div class="col-md-5  full_height">
+    <!-- make this the group chat name -->
+    
+<!--      {{> search_bar}}-->
+      {{> map}}
+      
+    </div>
+    <div class="col-md-5  full_height">
+      <div class="title">{{name}}</div>
+      {{> messages}}
       {{# if currentUser}}
         {{> textInput}}
       {{/if}}
     </div>
-    <div class="col-md-6">
-      {{> map}}
-    </div>
+  </div>
+  
+  <div class='col-md-2'>
+    
   </div>
 </template>
 
@@ -71,4 +76,17 @@
 
 <template name='map'>
   <div class="map" id="map"></div>
+  
+  
+<!-- google maps API :D -->  
+<!--
+  <iframe
+  width="100%"
+  height="514px"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBElD41kd-Rc9zBy-N9DMQndYKtCatA6IE
+    &q=Space+Needle,Seattle+WA">
+</iframe>
+-->
+  
 </template>
