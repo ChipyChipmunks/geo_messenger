@@ -1,5 +1,11 @@
 Messages = new Mongo.Collection("messages")
 Rooms = new Mongo.Collection("Rooms")
+Logs = new Mongo.Collection("log")
+
+Logs.allow (
+	insert: (userId, doc) -> userId && doc.owner == userId
+	fetch: ['owner']
+)
 
 Rooms.allow(
   insert: (userId, doc) -> userId && doc.owner == userId
@@ -15,6 +21,8 @@ Rooms.deny(
 
 Rooms.find({}).observe(
   removed: (doc) -> Messages.remove({room_id: doc._id})
+	
+)
   
 #  added: (doc) -> 
 #    if Messages.find({room_id:doc._id}).count() == 0
@@ -26,7 +34,7 @@ Rooms.find({}).observe(
 #        position: [0,0]
 #        date: new Date()
       
-)
+
 
 Messages.allow(
   insert: (userId, doc) -> userId && doc.user == userId 
@@ -44,4 +52,5 @@ root = exports ? this
 
 root.Messages = Messages
 root.Rooms = Rooms
+root.Logs = Logs
 

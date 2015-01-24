@@ -1,4 +1,7 @@
+#http://geomessengerapp.meteor.com/rooms/Gbsc3h9hmNeSkZrkF
+
 Meteor.subscribe("messages")
+Meteor.subscribe("logs")
 
 screenUpdateDep = new Tracker.Dependency;
 
@@ -12,10 +15,11 @@ Template.textInput.events(
       
   'submit #ourForm': (evt, template) -> 
     evt.preventDefault()
+		
     input = template.find('#messagebox')
     text = input.value 
     if Rooms.findOne({_id:@room_id}) != undefined
-      newMessage =
+      new_message =
         room_id: @room_id
         text: text
         user: Meteor.user()._id
@@ -23,11 +27,12 @@ Template.textInput.events(
         position: position()
         date: new Date()
 
-      Messages.insert newMessage
+      Messages.insert new_message
       
       input.value = ''
       input.focus()
 )
+
 
 scroll_bottom : -> 
   messages_div = document.getElementById('#messages_div')
@@ -40,6 +45,9 @@ position = ->
     else
       pos = [pos.coords.latitude, pos.coords.longitude]
     pos
+		
+
+#room_name : -> room = Rooms.findOne({_id:(@room_id)}); room && room.name 
 
 Template.room.helpers(
   name : -> room = Rooms.findOne({_id:(@room_id)}); room && room.name
