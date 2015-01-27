@@ -19,6 +19,9 @@
                 <div class='tab-pane' id='log_board'>
                     {{> log_board}}
                 </div>
+              <div>
+                {{> textInput}}
+              </div>
             </div>
         </div>
 		</div>
@@ -30,7 +33,7 @@
 
 <template name='messages'>
     <div class='messages_div' id='messages_div'>
-        {{#each messages}} {{> message }} {{/each}} {{> textInput}}
+        {{#each messages}} {{> message }} {{/each}}
     </div>
 </template>
 
