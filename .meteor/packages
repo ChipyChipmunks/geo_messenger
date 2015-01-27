@@ -18,3 +18,4 @@ fortawesome:fontawesome
 mrt:leaflet-0.6.4
 mdg:geolocation
 underscore
+herrhelms:meteor-leaflet-markercluster
