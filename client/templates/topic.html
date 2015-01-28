@@ -1,9 +1,9 @@
-<template name='room'>
+<template name='topic'>
   <div class="row full_height">
     <div class="col-md-6 full_height">
       {{> map}}
     </div>
-    <div class="col-md-6  full_height" style="display: flex;flex-direction: column;flex-wrap: nowrap;">
+    <div class="col-md-6 full_height" style="display: flex;flex-direction: column;flex-wrap: nowrap;">
       <header style="flex-shrink: 0;">
         <div class="title">{{name}}</div>
         <ul class="nav nav-tabs">
@@ -63,7 +63,7 @@
 <template name="message_infomation" class="message_infomation">
   <div>{{email}}</div>
   <div>{{date}}</div>
-  <div>{{room}} </div>
+  <div>{{topic}} </div>
   <div>{{positon}}</div>
 </template>
 

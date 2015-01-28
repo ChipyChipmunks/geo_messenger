@@ -75,7 +75,7 @@ body {
   color: gray;
 }
 
-.rooms {
+.topics {
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -95,7 +95,7 @@ body {
   padding-left: 2em;
 }
 
-.room_item {
+.topic_item {
   margin-top: 1em;
   padding: 5;
   max-width: 100%;  
@@ -125,7 +125,7 @@ body {
   color: #4DA9D6;  
 }
 
-.new_room {
+.new_topic {
   padding-left: 0.5em;
   margin-bottom: 1em;
   margin-top: 1em;

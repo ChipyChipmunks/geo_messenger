@@ -1,41 +1,42 @@
 Messages = new Mongo.Collection("messages")
-Rooms = new Mongo.Collection("Rooms")
+Topics = new Mongo.Collection("topics")
 Logs = new Mongo.Collection("log")
+
+Topics.attachSchema new SimpleSchema(
+  name:
+    type: String
+    label: "name"
+    max: 30
+
+  owner:
+    type: String
+    autoValue: ->
+      Meteor.userId()
+    autoform:
+      omit: true
+)
 
 Logs.allow (
 	insert: (userId, doc) -> userId && doc.owner == userId
 	fetch: ['owner']
 )
 
-Rooms.allow(
+Topics.allow(
   insert: (userId, doc) -> userId && doc.owner == userId
   remove: (userId, doc) -> doc.owner == userId
   update: (userId, doc) -> doc.owner == userId
   fetch: ['owner']
 )
 
-Rooms.deny(
+Topics.deny(
   insert: (userId, doc) -> doc.name.trim() == ''
   update: (userId, doc, fields) -> _.contains(fields, 'owner') && doc.name.trim() == ''
 )
 
-Rooms.find({}).observe(
-  removed: (doc) -> Messages.remove({room_id: doc._id})
-	
+Topics.find({}).observe(
+  removed: (doc) -> Messages.remove({topics_id: doc._id})
 )
   
-#  added: (doc) -> 
-#    if Messages.find({room_id:doc._id}).count() == 0
-#      Messages.insert 
-#        room_id: doc._id
-#        text: 'Welcome to the new room!'
-#        user: ''
-#        email: 'administrator'
-#        position: [0,0]
-#        date: new Date()
-      
-
-
 Messages.allow(
   insert: (userId, doc) -> userId && doc.user == userId 
   remove: (userId, doc) -> doc.user == userId
@@ -51,6 +52,6 @@ Messages.deny(
 root = exports ? this
 
 root.Messages = Messages
-root.Rooms = Rooms
+root.Topics = Topics
 root.Logs = Logs
 

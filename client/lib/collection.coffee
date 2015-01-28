@@ -1,3 +1,3 @@
 Meteor.subscribe "messages"
-Meteor.subscribe "rooms"
+Meteor.subscribe "topics"
 Meteor.subscribe "log"

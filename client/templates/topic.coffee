@@ -1,4 +1,3 @@
-#http://geomessengerapp.meteor.com/rooms/Gbsc3h9hmNeSkZrkF
 
 Meteor.subscribe("messages")
 Meteor.subscribe("logs")
@@ -18,25 +17,25 @@ Template.textInput.events(
 		
     input = template.find('#messagebox')
     text = input.value 
-    if Rooms.findOne({_id:@room_id}) != undefined
+    if Topics.findOne({_id:@topic_id}) != undefined
       new_message =
-        room_id: @room_id
+        topic_id: @topic_id
         text: text
         user: Meteor.user()._id
         email: Meteor.user().emails[0].address
         position: position()
         date: new Date()
 
-      Messages.insert new_message
+      Messages.insert new_message, () ->
+        $('a[href="#Messages"]').click()
+        $(".tab-content").scrollTop 1000000000000000000
+        return
       
       input.value = ''
       input.focus()
+      return
 )
-
-
-scroll_bottom : -> 
-  messages_div = document.getElementById('#messages_div')
-  messages_div.scrollTop = messages_div.scrollHeight
+  
 
 position = ->
     pos = Geolocation.currentLocation()
@@ -47,36 +46,27 @@ position = ->
     pos
 		
 
-#room_name : -> room = Rooms.findOne({_id:(@room_id)}); room && room.name 
+#topic_name : -> topic = topics.findOne({_id:(@topic_id)}); topic && topic.name 
 
-Template.room.helpers(
-  name : -> room = Rooms.findOne({_id:(@room_id)}); room && room.name
+Template.topic.helpers(
+  name : -> topic = Topics.findOne({_id:(@topic_id)}); topic && topic.name
 )
 
 Template.message.events(
   'click .trash' : -> (Messages.remove(this._id))
   'click .arrow' : -> console.log('Its working')
   'click .message' : -> console.log(this) 
+  'click .clipboard' : -> 
 )
 
 Template.messages.helpers ( 
-  messages : -> Messages.find({room_id:@room_id},{sort: { date: 1 }}).fetch()
+  messages : -> Messages.find({topic_id: @topic_id},{sort: { date: 1 }}).fetch()
 )
 
 Template.message.helpers (
   time : -> screenUpdateDep.depend(); moment(@date).fromNow()
-  room : -> @room_id
+  topic : -> @topic_id
 )
 
-Template.search_bar.events (
-  'submit #search_bar' : (evt, template) -> 
-    evt.preventDefault()
-    item = template.find('#srch-term')
-    result = Messages.find({text: new RegExp(item)}).fetch()
-    console.log(result)
-    item.value = ''
-    item.focus()
-)
-  
   
   

@@ -1,0 +1,27 @@
+<template name='topics'>
+  {{#each topic_list}}
+    {{> topic_item}}
+  {{/each}}
+<!--  <form id='topic_form'>-->
+    {{> quickForm collection="Topics" id="insert_topics_form" type="insert"}}
+<!--    <input id='new_topic'  type="text" style="width:100%" class="new_topic" placeholder="New topic" autocomplete="off"/>-->
+<!--  </form>-->
+</template>
+
+<template name='topic_item'>
+  <div class='topic_item' data-toggle="collapse" data-target="#{{this._id}}">
+    <i class="fa fa-trash trash icon"></i>
+    <a href='/topics/{{_id}}'>{{name}}</a>
+  </div>
+  <div class="collapse" id="{{this._id}}">
+    <a href="#" class="content_field" data-name="{{this._id}}"></a>
+      {{> topic_infomation}}
+  </div>
+</template>
+
+<template name="topic_infomation">
+  <div>Owner: {{owner_email}}</div>
+  <div>Created at: {{creation_date}}</div>
+</template>
+
+
