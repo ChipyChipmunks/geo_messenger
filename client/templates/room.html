@@ -50,10 +50,9 @@
 <template name='message' class="message">
   <div class='message' data-toggle="collapse" data-target="#{{this._id}}">
     <i class="fa fa-trash icon trash"></i>
-    <!--  Do somthing with the arrow because it looks cool and it will be nice to have somthing there  -->
     <i class="fa fa-location-arrow icon arrow"></i>
     <div class='user_details'>{{email}} ({{time}})</div>
-    <div class='user_text'>{{text}}</div>
+    <div class='user_text highlightable'>{{text}}</div>
     <div class="collapse" id="{{this._id}}">
       <a href="#" class="content_field" data-name="{{this._id}}"></a>
       {{> message_infomation}}
