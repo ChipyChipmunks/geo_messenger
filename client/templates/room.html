@@ -1,98 +1,92 @@
 <template name='room'>
-    <div class="row full_height">
-        <div class="col-md-6 full_height">
-            {{> map}}
+  <div class="row full_height">
+    <div class="col-md-6 full_height">
+      {{> map}}
+    </div>
+    <div class="col-md-6  full_height" style="display: flex;flex-direction: column;flex-wrap: nowrap;">
+      <header style="flex-shrink: 0;">
+        <div class="title">{{name}}</div>
+        <ul class="nav nav-tabs">
+          <li class='active'><a href="#Messages" data-toggle="tab">Message Board</a>
+          </li>
+          <li><a href="#log_board" data-toggle="tab">Log Board</a>
+          </li>
+          <li class='#sensors'><a href='#sensors' data-toggle='tab'>Sensors</a>
+          </li>
+        </ul>
+      </header>
+      <div class='tab-content' style="overflow:auto; flex-grow:1; border-left: 1px solid #ddd;border-right: 1px solid #ddd;border-bottom: 1px solid #ddd;">
+        <div class='tab-pane active' id='Messages'>
+          {{> messages}}
         </div>
-        <div class="col-md-6  full_height">
-            <div class="title">{{name}}</div>
+        <div class='tab-pane' id='log_board'>
+          {{> log_board}}
+        </div>
+        <div class='tab-pane' id='sensors'>
+          {{> sensors}}
+        </div>
+      </div>
+      <div style="flex-shrink: 0;">
+        {{> textInput}}
+      </div>
+    </div>
+  </div>
+</template>
 
-            <ul class="nav nav-tabs">
-                <li class='active'><a href="#Messages" data-toggle="tab">Message Board</a>
-                </li>
-                <li><a href="#log_board" data-toggle="tab">Log Board</a>
-                </li>
-            </ul>
-            <div class='tab-content' style="overflow:auto">
-                <div class='tab-pane active' id='Messages'>
-                    {{> messages}}
-                </div>
-                <div class='tab-pane' id='log_board'>
-                    {{> log_board}}
-                </div>
-              <div>
-                {{> textInput}}
-              </div>
-            </div>
-        </div>
-		</div>
+<template name='sensors'>
+  <span>sensors</span>
 </template>
 
 <template name='log_board'>
-    <span>Test</span>
+  <span>Test</span>
 </template>
 
 <template name='messages'>
-    <div class='messages_div' id='messages_div'>
-        {{#each messages}} {{> message }} {{/each}}
-    </div>
-</template>
-
-<template name='search_bar'>
-    <div class='message' data-toggle="collapse" data-target="#search_results">
-        <form class="navbar-form" role="search" id='search_bar'>
-            <div class="search_bar" style="max-width:100%">
-                <input type="text" class="form-control search_bar" placeholder="Search" name="srch-term" id="srch-term" autocomplete="off">
-
-                <!--
-        <div class="collapse" id="search_results">
-        <a href="#" class="content_field" data-name="{{this._id}}"></a>
-        yo
-        </div>
--->
-            </div>
-        </form>
-    </div>
+  <div class='messages_div' id='messages_div'>
+    {{#each messages}} {{> message }} {{/each}}
+  </div>
 </template>
 
 <template name='message' class="message">
-    <div class='message' data-toggle="collapse" data-target="#{{this._id}}">
-        <i class="fa fa-trash icon trash"></i>
-        <!--  Do somthing with the arrow because it looks cool and it will be nice to have somthing there  -->
-        <i class="fa fa-location-arrow icon arrow"></i>
-        <div class='user_details'>{{email}} ({{time}})</div>
-        <div class='user_text'>{{text}}</div>
-        <div class="collapse" id="{{this._id}}">
-            <a href="#" class="content_field" data-name="{{this._id}}"></a>
-            {{> message_infomation}}
-        </div>
+  <div class='message' data-toggle="collapse" data-target="#{{this._id}}">
+    <i class="fa fa-trash icon trash"></i>
+    <!--  Do somthing with the arrow because it looks cool and it will be nice to have somthing there  -->
+    <i class="fa fa-location-arrow icon arrow"></i>
+    <div class='user_details'>{{email}} ({{time}})</div>
+    <div class='user_text'>{{text}}</div>
+    <div class="collapse" id="{{this._id}}">
+      <a href="#" class="content_field" data-name="{{this._id}}"></a>
+      {{> message_infomation}}
     </div>
+  </div>
 </template>
 
 <template name="message_infomation" class="message_infomation">
-    <div>{{email}}</div>
-    <div>{{date}}</div>
-    <div>{{room}} </div>
-    <div>{{positon}}</div>
+  <div>{{email}}</div>
+  <div>{{date}}</div>
+  <div>{{room}} </div>
+  <div>{{positon}}</div>
 </template>
 
 <template name='textInput'>
-    <form id='ourForm'>
-        <textarea id='messagebox' cols="40" rows="5" style="width:100%" class="message_box" placeholder="Enter Message" autocomplete="off"></textarea>
-    </form>
+  <form id='ourForm'>
+    <textarea id='messagebox' cols="40" rows="5" style="width:100%" class="message_box"
+              placeholder="Enter Message" autocomplete="off"></textarea>
+  </form>
 </template>
 
 <template name='map'>
-    <div class="map" id="map"></div>
+  <div class="map" id="map"></div>
 
 
-    <!-- google maps API :D -->
-    <!--
-  <iframe
-  width="100%"
-  height="514px"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBElD41kd-Rc9zBy-N9DMQndYKtCatA6IE
-    &q=Space+Needle,Seattle+WA">
+  <!-- google maps API :D -->
+  <!--
+<iframe
+width="100%"
+height="514px"
+frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBElD41kd-Rc9zBy-N9DMQndYKtCatA6IE
+&q=Space+Needle,Seattle+WA">
 </iframe>
 -->
 

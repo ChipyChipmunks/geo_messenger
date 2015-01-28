@@ -27,7 +27,6 @@ body {
 .title {
   align-self: center;
   text-align: center;
-  padding-bottom: 0.5em;
   color: black;
   font-size: 2em;
   font-family: sans-serif;
@@ -138,11 +137,6 @@ body {
   margin-top: 1em;
 }
 
-.messages_div {
-  overflow: auto;
-  max-height: 30em;
-}
-
 #map { 
 	margin-top: 1em;
   height: 99%;
@@ -210,3 +204,46 @@ body {
 .marker-cluster span {
 	line-height: 30px;
 	}
+
+
+
+
+
+
+
+
+
+
+.flash{
+
+  -moz-animation: flash 1s ease-out;
+  -moz-animation-iteration-count: 1;
+
+  -webkit-animation: flash 1s ease-out;
+  -webkit-animation-iteration-count: 1;
+
+  -ms-animation: flash 1s ease-out;
+  -ms-animation-iteration-count: 1;
+
+}
+
+@-webkit-keyframes flash {
+    0% { background-color:none;}
+    50% { background-color:#fbf8b2;}        
+    100% {background-color:none;}
+}
+
+@-moz-keyframes flash {
+    0% { background-color:none;}
+    50% { background-color:#fbf8b2;}        
+    100% {background-color:none;}
+}
+
+@-ms-keyframes flash {
+    0% { background-color:none;}
+    50% { background-color:#fbf8b2;}        
+    100% {background-color:none;}
+}
+.leaflet-container a {
+  -webkit-user-select: none;
+}
