@@ -1,11 +1,8 @@
 <template name='topics'>
   {{#each topic_list}}
-    {{> topic_item}}
+  {{> topic_item}}
   {{/each}}
-<!--  <form id='topic_form'>-->
-    {{> quickForm collection="Topics" id="insert_topics_form" type="insert"}}
-<!--    <input id='new_topic'  type="text" style="width:100%" class="new_topic" placeholder="New topic" autocomplete="off"/>-->
-<!--  </form>-->
+  {{> quickForm collection="Topics" id="insert_topics_form" type="insert"}}
 </template>
 
 <template name='topic_item'>
@@ -15,7 +12,7 @@
   </div>
   <div class="collapse" id="{{this._id}}">
     <a href="#" class="content_field" data-name="{{this._id}}"></a>
-      {{> topic_infomation}}
+    {{> topic_infomation}}
   </div>
 </template>
 
@@ -23,5 +20,3 @@
   <div>Owner: {{owner_email}}</div>
   <div>Created at: {{creation_date}}</div>
 </template>
-
-

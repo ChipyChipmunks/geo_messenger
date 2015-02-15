@@ -1,4 +1,3 @@
-
 Meteor.subscribe("messages")
 Meteor.subscribe("logs")
 
@@ -7,46 +6,40 @@ screenUpdateDep = new Tracker.Dependency;
 Meteor.setInterval((-> screenUpdateDep.changed()), 30000)
 
 Template.textInput.events(
-  'keypress textarea': (e) ->
-    if (!e.shiftKey && e.keyCode == 13)
-      e.preventDefault()
-      $('form#ourForm').submit()
-      
-  'submit #ourForm': (evt, template) -> 
-    evt.preventDefault()
-		
-    input = template.find('#messagebox')
-    text = input.value 
-    if Topics.findOne({_id:@topic_id}) != undefined
-      new_message =
-        topic_id: @topic_id
-        text: text
-        user: Meteor.user()._id
-        email: Meteor.user().emails[0].address
-        position: position()
-        date: new Date()
+'keypress textarea': (e) ->
+  if (!e.shiftKey && e.keyCode == 13)
+    e.preventDefault()
+    $('form#ourForm').submit()
+'submit #ourForm': (evt, template) -> 
+  evt.preventDefault()
+  input = template.find('#messagebox')
+  text = input.value 
+  if Topics.findOne({_id:@topic_id}) != undefined
+    new_message =
+    topic_id: @topic_id
+    text: text
+    user: Meteor.user()._id
+    email: Meteor.user().emails[0].address
+    position: position()
+    date: new Date()
 
-      Messages.insert new_message, () ->
-        $('a[href="#Messages"]').click()
-        $(".tab-content").scrollTop 1000000000000000000
-        return
-      
-      input.value = ''
-      input.focus()
-      return
+Messages.insert new_message, () ->
+  $('a[href="#Messages"]').click()
+  $(".tab-content").scrollTop 1000000000000000000
+return
+
+input.value = ''
+  input.focus()
+  return
 )
-  
 
-position = ->
+  position = ->
     pos = Geolocation.currentLocation()
     if pos == null
       pos = [-41.2889, 174.7772] 
-    else
-      pos = [pos.coords.latitude, pos.coords.longitude]
-    pos
-		
-
-#topic_name : -> topic = topics.findOne({_id:(@topic_id)}); topic && topic.name 
+      else
+        pos = [pos.coords.latitude, pos.coords.longitude]
+        pos
 
 Template.topic.helpers(
   name : -> topic = Topics.findOne({_id:(@topic_id)}); topic && topic.name
@@ -68,5 +61,4 @@ Template.message.helpers (
   topic : -> @topic_id
 )
 
-  
-  
+

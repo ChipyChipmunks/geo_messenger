@@ -7,28 +7,17 @@
       <header style="flex-shrink: 0;">
         <div class="title">{{name}}</div>
         <ul class="nav nav-tabs">
-          <li class='active'><a href="#Messages" data-toggle="tab">Message Board</a>
-          </li>
-          <li><a href="#log_board" data-toggle="tab">Log Board</a>
-          </li>
-          <li class='#sensors'><a href='#sensors' data-toggle='tab'>Sensors</a>
-          </li>
+          <li class='active'><a href="#Messages" data-toggle="tab">Message Board</a></li>
+          <li><a href="#log_board" data-toggle="tab">Log Board</a></li>
+          <li class='#sensors'><a href='#sensors' data-toggle='tab'>Sensors</a></li>
         </ul>
       </header>
       <div class='tab-content' style="overflow:auto; flex-grow:1; border-left: 1px solid #ddd;border-right: 1px solid #ddd;border-bottom: 1px solid #ddd;">
-        <div class='tab-pane active' id='Messages'>
-          {{> messages}}
-        </div>
-        <div class='tab-pane' id='log_board'>
-          {{> log_board}}
-        </div>
-        <div class='tab-pane' id='sensors'>
-          {{> sensors}}
-        </div>
+        <div class='tab-pane active' id='Messages'>{{> messages}}</div>
+        <div class='tab-pane' id='log_board'>{{> log_board}}</div>
+        <div class='tab-pane' id='sensors'>{{> sensors}}</div>
       </div>
-      <div style="flex-shrink: 0;">
-        {{> textInput}}
-      </div>
+      <div style="flex-shrink: 0;">{{> textInput}}</div>
     </div>
   </div>
 </template>
@@ -76,17 +65,4 @@
 
 <template name='map'>
   <div class="map" id="map"></div>
-
-
-  <!-- google maps API :D -->
-  <!--
-<iframe
-width="100%"
-height="514px"
-frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBElD41kd-Rc9zBy-N9DMQndYKtCatA6IE
-&q=Space+Needle,Seattle+WA">
-</iframe>
--->
-
 </template>
