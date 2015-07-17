@@ -6,38 +6,33 @@ screenUpdateDep = new Tracker.Dependency;
 Meteor.setInterval((-> screenUpdateDep.changed()), 30000)
 
 Template.textInput.events(
-'keypress textarea': (e) ->
-  if (!e.shiftKey && e.keyCode == 13)
-    e.preventDefault()
-    $('form#ourForm').submit()
-'submit #ourForm': (evt, template) -> 
-  evt.preventDefault()
-  input = template.find('#messagebox')
-  text = input.value 
-  if Topics.findOne({_id:@topic_id}) != undefined
-    new_message =
-    topic_id: @topic_id
-    text: text
-    user: Meteor.user()._id
-    email: Meteor.user().emails[0].address
-    position: position()
-    date: new Date()
+  'submit #insert_messages_form': (evt, template) -> 
+    evt.preventDefault()
+    input = template.find('text')
+    text = input.value 
+  
+    Messages.insert (
+      message: text
+      creation_date: new Date()
+      owner: Meteor.user()._id
+      owner_email: Meteor.user().emails[0].address
+    )
 
 Messages.insert new_message, () ->
   $('a[href="#Messages"]').click()
   $(".tab-content").scrollTop 1000000000000000000
-return
+  return
 
-input.value = ''
+  input.value = ''
   input.focus()
   return
 )
 
-  position = ->
+position = ->
     pos = Geolocation.currentLocation()
     if pos == null
       pos = [-41.2889, 174.7772] 
-      else
+     else
         pos = [pos.coords.latitude, pos.coords.longitude]
         pos
 

@@ -36,13 +36,26 @@ Topics.deny(
 Topics.find({}).observe(
   removed: (doc) -> Messages.remove({topics_id: doc._id})
 )
-  
-Messages.allow(
-  insert: (userId, doc) -> userId && doc.user == userId 
-  remove: (userId, doc) -> doc.user == userId
-  update: (userId, doc) -> doc.user == userId
-  fetch: ['user']
+
+Messages.attachSchema new SimpleSchema(
+  message:
+    type: String
+    label: "message"
+    
+  owner:
+    type: String
+    autoValue: ->
+        Meteor.userId()
+      autoform:
+        omit: true
 )
+  
+#Messages.allow(
+#  insert: (userId, doc) -> userId && doc.user == userId 
+#  remove: (userId, doc) -> doc.user == userId
+#  update: (userId, doc) -> doc.user == userId
+#  fetch: ['user']
+#)
 
 Messages.deny(
   insert: (userId, doc) -> doc.text.trim() == ''
